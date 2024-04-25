@@ -11,6 +11,7 @@ import java.util.concurrent.Executors;
 import static java.text.NumberFormat.getInstance;
 
 class GeradorSeuNumeroUtilTest {
+
     @Test
     public void testGeracaoSemColisoes() throws ExecutionException, InterruptedException {
         final int numeroDeCombinacoes = 100_000;
