@@ -3,7 +3,6 @@ package br.com.ccs.gerador;
 import lombok.experimental.UtilityClass;
 
 import java.security.SecureRandom;
-import java.util.Random;
 import java.util.logging.Logger;
 
 @UtilityClass

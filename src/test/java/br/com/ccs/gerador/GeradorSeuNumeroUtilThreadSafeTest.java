@@ -26,7 +26,7 @@ class GeradorSeuNumeroUtilThreadSafeTest {
                             combinacoes.add(combinacao);
 
                             if (i % 10_000 == 0) {
-                                System.out.println("\n >>>>>> " + Thread.currentThread().toString() + " Combinações Geradas: " + getInstance().format(i));
+                                System.out.println("\n >>>>>> " + Thread.currentThread() + " Combinações Geradas: " + getInstance().format(i));
                             }
                         }
                     },
