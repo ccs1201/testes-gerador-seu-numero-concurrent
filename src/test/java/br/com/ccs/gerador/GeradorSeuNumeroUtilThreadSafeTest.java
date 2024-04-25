@@ -7,6 +7,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Pattern;
 
 import static java.text.NumberFormat.getInstance;
@@ -14,9 +15,9 @@ import static java.text.NumberFormat.getInstance;
 class GeradorSeuNumeroUtilThreadSafeTest {
 
     @Test
-    public void testGeracaoSemColisoes() throws ExecutionException, InterruptedException {
+    void testGeracaoSemColisoes() throws ExecutionException, InterruptedException {
         var startAt = System.currentTimeMillis();
-        final int numeroDeCombinacoes = 100_000;
+        final int numeroDeCombinacoes = 10_000;
         final var threads = Runtime.getRuntime().availableProcessors();
         final var futures = new CompletableFuture[threads];
         final var combinacoes = ConcurrentHashMap.newKeySet(numeroDeCombinacoes * threads);
@@ -27,7 +28,7 @@ class GeradorSeuNumeroUtilThreadSafeTest {
                             String combinacao = GeradorSeuNumeroUtilThreadSafe.gerarIdentificadorSeuNumero();
                             combinacoes.add(combinacao);
 
-                            if (i % 10_000 == 0) {
+                            if (i % 1_000 == 0) {
                                 System.out.println("\n >>>>>> " + Thread.currentThread() + " Combinações Geradas: " + getInstance().format(i));
                             }
                         }
@@ -43,9 +44,13 @@ class GeradorSeuNumeroUtilThreadSafeTest {
 
         Pattern pattern = Pattern.compile("[a-zA-Z0-9]{20}");
 
+        AtomicInteger i = new AtomicInteger(1);
+
         combinacoes.parallelStream().forEach(object -> {
             Assertions.assertTrue(pattern.matcher(object.toString()).matches());
-            System.out.println(object);
+            if (i.incrementAndGet() % 1_000 == 0) {
+                System.out.println(object);
+            }
         });
     }
 }

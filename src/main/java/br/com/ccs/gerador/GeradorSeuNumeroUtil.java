@@ -13,7 +13,7 @@ public class GeradorSeuNumeroUtil {
     public String gerarIdentificadorSeuNumero() {
         try {
             var identificador = new StringBuilder(COMPRIMENTO_IDENTIFICADOR_SEU_NUMERO);
-            var random = new Random(COMPRIMENTO_IDENTIFICADOR_SEU_NUMERO);//SecureRandom.getInstanceStrong();
+            var random = new Random(COMPRIMENTO_IDENTIFICADOR_SEU_NUMERO);
 
             for (var i = 0; i < COMPRIMENTO_IDENTIFICADOR_SEU_NUMERO; i++) {
                 var index = random.nextInt(CARACTERES_ALFANUMERICOS.length());
