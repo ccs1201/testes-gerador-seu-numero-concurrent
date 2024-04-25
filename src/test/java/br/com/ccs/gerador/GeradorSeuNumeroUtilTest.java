@@ -19,7 +19,6 @@ class GeradorSeuNumeroUtilTest {
         final var combinacoes = ConcurrentHashMap.newKeySet(numeroDeCombinacoes * threads);
 
         for (int t = 0; t < threads; t++) {
-            System.out.println("Future n. -> " + t + " iniciado pela Thread -> " + Thread.currentThread().getThreadGroup().getName() + " - " + Thread.currentThread().getName());
             futures[t] = CompletableFuture.runAsync(() -> {
                         for (int i = 0; i < numeroDeCombinacoes; i++) {
                             String combinacao = GeradorSeuNumeroUtil.gerarIdentificadorSeuNumero();
