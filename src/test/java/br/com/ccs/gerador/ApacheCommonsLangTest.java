@@ -1,5 +1,6 @@
 package br.com.ccs.gerador;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +12,7 @@ import java.util.regex.Pattern;
 
 import static java.text.NumberFormat.getInstance;
 
-class GeradorSeuNumeroUtilThreadSafeTest {
+class ApacheCommonsLangTest {
 
     @Test
     public void testGeracaoSemColisoes() throws ExecutionException, InterruptedException {
@@ -24,7 +25,7 @@ class GeradorSeuNumeroUtilThreadSafeTest {
         for (int t = 0; t < threads; t++) {
             futures[t] = CompletableFuture.runAsync(() -> {
                         for (int i = 0; i < numeroDeCombinacoes; i++) {
-                            String combinacao = GeradorSeuNumeroUtilThreadSafe.gerarIdentificadorSeuNumero();
+                            String combinacao = RandomStringUtils.randomAlphanumeric(20);
                             combinacoes.add(combinacao);
 
                             if (i % 10_000 == 0) {
