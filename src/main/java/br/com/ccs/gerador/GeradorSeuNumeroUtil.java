@@ -1,3 +1,5 @@
+package br.com.ccs.gerador;
+
 import lombok.experimental.UtilityClass;
 
 import java.util.Random;
@@ -8,10 +10,9 @@ public class GeradorSeuNumeroUtil {
     private static final String CARACTERES_ALFANUMERICOS = "abcdefghijklmnopqrstuvwxyz0123456789";
     private static final short COMPRIMENTO_IDENTIFICADOR_SEU_NUMERO = 20;
 
-
     public String gerarIdentificadorSeuNumero() {
-        var identificador = new StringBuilder(COMPRIMENTO_IDENTIFICADOR_SEU_NUMERO);
         try {
+            var identificador = new StringBuilder(COMPRIMENTO_IDENTIFICADOR_SEU_NUMERO);
             var random = new Random(COMPRIMENTO_IDENTIFICADOR_SEU_NUMERO);//SecureRandom.getInstanceStrong();
 
             for (var i = 0; i < COMPRIMENTO_IDENTIFICADOR_SEU_NUMERO; i++) {
@@ -23,5 +24,6 @@ public class GeradorSeuNumeroUtil {
             Logger.getLogger(GeradorSeuNumeroUtil.class.getName()).severe(e.getMessage());
             throw new RuntimeException(e);
         }
+
     }
 }
