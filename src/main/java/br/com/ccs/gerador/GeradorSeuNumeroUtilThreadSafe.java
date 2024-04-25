@@ -10,7 +10,6 @@ public class GeradorSeuNumeroUtilThreadSafe {
     private static final String CARACTERES_ALFANUMERICOS = "abcdefghijklmnopqrstuvwxyz0123456789";
     private static final short COMPRIMENTO_IDENTIFICADOR_SEU_NUMERO = 20;
 
-
     public String gerarIdentificadorSeuNumero() {
         var identificador = new StringBuilder(COMPRIMENTO_IDENTIFICADOR_SEU_NUMERO);
         try {
